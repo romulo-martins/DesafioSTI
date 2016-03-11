@@ -1,3 +1,5 @@
+package projeto;
+
 
 import java.io.*;
 import java.util.*;
@@ -6,7 +8,7 @@ import java.util.*;
  *
  * @author Romulo
  */
-public class Escola {
+public class ManipulaArquivo {
 
     public static String nomeArquivo = "alunos.csv";
 
@@ -14,10 +16,10 @@ public class Escola {
     public static Aluno buscaAluno(String matricula) {
 
         try {
-            Scanner scanner = new Scanner(new FileReader(nomeArquivo));
-            while (scanner.hasNext()) {
+            Scanner sc = new Scanner(new FileReader(nomeArquivo));
+            while (sc.hasNext()) {
                 // separa a linha de dados do arquivo
-                String[] dados = scanner.nextLine().split(";");
+                String[] dados = sc.nextLine().split(";");
 
                 // cria uma instancia do aluno com os dados lidos da linha do arquivo csv
                 Aluno novoAluno = new Aluno();
@@ -32,26 +34,12 @@ public class Escola {
                     return novoAluno;
                 }
             }
-
+            sc.close();
         } catch (IOException e) {
             System.out.println("Erro ao tentar ler o arquivo! verifique se o arquivo possue algum erro!");
         }
 
         return null;
-    }
-
-    public static void salvaAluno(Aluno aluno) {
-        
-        try {
-            Scanner scanner = new Scanner(new FileReader(nomeArquivo));
-            while (scanner.hasNext()) {
-                   
-            }
-
-        } catch (IOException e) {
-            System.out.println("Erro ao tentar ler o arquivo! verifique se o arquivo possue algum erro!");
-        }
-
     }
 
 }
