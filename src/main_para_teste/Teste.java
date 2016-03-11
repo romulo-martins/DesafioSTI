@@ -21,24 +21,27 @@ public class Teste {
             String matricula = sc.next();
             
             Aluno aluno = ManipulaArquivo.buscaAluno(matricula);
+            
             if(aluno != null && aluno.status.equals(ativo)) {
                 List<String> listaDeOpcoes = aluno.opcoesEmail();
                 
-                System.out.println(aluno.getPrimeiroNome()+",por favor escolha uma das opções abaixo para o seu UFFMail");
-                System.out.println("1 - " + listaDeOpcoes.get(0));
-                System.out.println("2 - " + listaDeOpcoes.get(1));
-                System.out.println("3 - " + listaDeOpcoes.get(2));
-                System.out.println("4 - " + listaDeOpcoes.get(3));
-                System.out.println("5 - " + listaDeOpcoes.get(4));
+                System.out.println(aluno.getPrimeiroNome()+", por favor escolha uma das opções abaixo para o seu UFFMail");
+                
+                // foi utilizado um for comun ao inves de um foreach p/ poder aproveitar o indice
+                // escrevi a exibição das opções em função da lista que é retornada
+                // assim se o método opcoesEmail implementar outras opções não teremos que alterar, a main
+                for(int i = 0; i < listaDeOpcoes.size(); i++) {
+                    System.out.println((i + 1) + " - " + listaDeOpcoes.get(i));
+                }
 
                 // o usuário escolhe a opção que deseja, caso informe um número inválido ele é avisado 
                 int opcao;
                 do {
-                    opcao = sc.nextInt();
-                    if(opcao < 0 || opcao > 5) {
+                    opcao = sc.nextInt() - 1; // em termos de indice trabalha-se de 0 a 4
+                    if(opcao < 0 || opcao > listaDeOpcoes.size()) {
                         System.out.println("Informe uma opção válida!");
                     }
-                }while(opcao < 0 || opcao > 5);
+                }while(opcao < 0 || opcao > listaDeOpcoes.size());
                 
                 // exibe a mesagem final
                 System.out.println("A criação de seu e-mail "+listaDeOpcoes.get(opcao)+

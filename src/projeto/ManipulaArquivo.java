@@ -8,6 +8,14 @@ import java.util.*;
  *
  * @author Romulo
  */
+
+/*
+    OBSERVAÇÃO: foi utilizado uma busca sequencial, pois não conheço como é a lógica da matricula e
+    qual a lógica de organização dos alunos(provavelmente deve ser pelo hash da matricula).
+
+    Com este conhecimento poderiamos tentar descobrir o ponteiro do arquivo o qual está o aluno.
+*/
+
 public class ManipulaArquivo {
 
     public static String nomeArquivo = "alunos.csv";

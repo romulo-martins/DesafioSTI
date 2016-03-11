@@ -20,7 +20,7 @@ public class Aluno {
 
     public Aluno() { }
     
-    // neste método deduzi que todos os nomes irão vir no padrão primeiroNome + segundoNome + terceiroNome, como mostra no arquivo csv
+    // Neste método deduzi que todos os nomes irão vir no padrão primeiroNome + segundoNome + terceiroNome, como mostra no arquivo csv
     public List<String> opcoesEmail() {
         List<String> listaDeEmails = new ArrayList<>();              
         String email = "@id.uff.br";
