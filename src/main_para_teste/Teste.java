@@ -25,7 +25,7 @@ public class Teste {
             Aluno aluno = ArquivoManager.buscaAluno(matricula);
 
             if (aluno != null && aluno.status.equals(ativo)) {
-                List<String> listaDeOpcoes = AlunoManager.opcoesEmail(aluno);
+                List<String> listaDeOpcoes = AlunoManager.opcoesEmail(aluno, 6);
 
                 System.out.println(aluno.getPrimeiroNome() + ", por favor escolha uma das opções abaixo para o seu UFFMail");
 
@@ -47,9 +47,9 @@ public class Teste {
 
                 // atribui o novo uffmail
                 aluno.uffmail = listaDeOpcoes.get(opcao);
-                
+
                 // gera uma senha provisória para o aluno
-                aluno.senha = SenhaManager.gerarSenha(8);                               
+                aluno.senha = SenhaManager.gerarSenha(8);
 
                 // envia um SMS para o aluno, caso ocorra algum erro não exibe a mensgem
                 if (AlunoManager.enviarSMS(aluno)) {
@@ -66,7 +66,7 @@ public class Teste {
             // verifica se o cliente deseja sair do programa
             System.out.println("Deseja sair(S/N)");
             String opcaoSaida = sc.next();
-            if (opcaoSaida.equals("S") || opcaoSaida.equals("s")) {
+            if (opcaoSaida.toLowerCase().equals("s")) {
                 sair = true;
             }
 

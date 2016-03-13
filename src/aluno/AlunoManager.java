@@ -55,5 +55,43 @@ public class AlunoManager {
 
         return listaDeEmails;
     }
+    
+    // Método que gera opções de email de uma forma mais aleatoria  
+    public static List<String> opcoesEmail(Aluno aluno, int numero) {
+        List<String> listaDeEmails = new ArrayList<>();
+        String dominio = "@id.uff.br";        
+        String nome = aluno.nome.replace("da ", "").replace("do ", "").replace("de ", "");
+        
+        Random random = new Random();
+        
+        try {
+            
+            String[] nomes = nome.split(" ");
+            
+            for(int i = 0; i < numero; i++) {
+                String uffmail = "";
+                for(int j = 0; j < nomes.length; j++) {
+                    switch (random.nextInt(3)) {
+                        case 0: 
+                            uffmail += uffmail.length() > 0 ? "_" + nomes[j].toLowerCase() : nomes[j].toLowerCase();
+                            break;
+                        case 1:
+                            uffmail += nomes[j].toLowerCase();
+                            break;
+                        case 2:
+                            uffmail += nomes[j].toLowerCase().charAt(0);
+                            break;
+                    }
+                }
+                uffmail += dominio;
+                listaDeEmails.add(uffmail);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao tentar gerar as opções de emails! tente novamente");
+        }
+
+        return listaDeEmails;
+    }
 
 }
