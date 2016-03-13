@@ -1,7 +1,8 @@
-package projeto;
+package auxiliares;
 
 import java.io.*;
 import java.util.*;
+import aluno.Aluno;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.util.*;
     Com este conhecimento poderiamos tentar descobrir o ponteiro do arquivo o qual está o aluno.
 */
 
-public class ManipulaArquivo {
+public class ArquivoManager {
 
     public static String nomeArquivo = "alunos.csv";
 
